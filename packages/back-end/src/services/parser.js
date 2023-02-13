@@ -13,8 +13,8 @@ module.exports = {
         $('#MainCol > div:nth-child(1) > ul > li').each((_i, el) => {
             const link = $(el).find('a').attr('href')
             q.push(function (cb) {
-                const result = worker(url + link)
-                cb(null, console.log(result))
+                worker(url + link)
+                cb(null)
             })
         })
 
