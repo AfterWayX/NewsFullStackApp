@@ -1,0 +1,8 @@
+const service = require('../services/jobs');
+
+module.exports = {
+    getJobs: async (req, res) => {
+        const { limit, skip, query } = req.query
+        return await service.getJobs({res, limit, skip, query})
+    }
+}

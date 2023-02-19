@@ -1,6 +1,7 @@
 const { gotScraping } = require('got-scraping');
 
 const client = require('../configs/db.config');
+const { insertObject } = require('../controllers/database');
 
 module.exports = async (url, query) => {
     const id = query.split('?').pop().split('&').shift()
@@ -17,15 +18,6 @@ module.exports = async (url, query) => {
         companyName, jobTitle, location, description, jobUrl
     }
     try {
-        await (await client.connect())
-            .db('jobs')
-            .collection('jobs')
-            .updateOne(
-                jobInfo,
-                {
-                    $setOnInsert: jobInfo
-                },
-                { upsert: true }
-            )
+        insertObject(jobInfo)
     } catch (err) { }
 }

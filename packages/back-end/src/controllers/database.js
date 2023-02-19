@@ -1,15 +1,26 @@
 const client = require("../configs/db.config");
 
 module.exports = {
-    insertObject: (jobInfo) => {
-        client.connect(err => {
-            const collection = client.db("test").collection("devices");
-            collection.insertOne(jobInfo, (err, result) => {
-                if (err) throw err;
-                console.log("1 document inserted");
-                db.close();
-            })
-            client.close();
-        });
+    insertObject: async (jobInfo) => {
+        await (await client.connect())
+            .db('jobs')
+            .collection('jobs')
+            .updateOne(
+                jobInfo,
+                {
+                    $setOnInsert: jobInfo
+                },
+                { upsert: true }
+            )
+    },
+    getJobs: async (params) => {
+        const { query, skip, limit } = params
+        const filter = query ? {} : { jobTitle: { $regex: query || '' } }
+        const connected = await client.connect()
+        const coll = connected.db('jobs').collection('jobs');
+        const cursor = coll.find(filter, { skip: Number(skip) || 0, limit: Number(limit) || 10 });
+        const result = await cursor.toArray();
+        await client.close();
+        return result
     }
 }

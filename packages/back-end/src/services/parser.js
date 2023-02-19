@@ -3,7 +3,6 @@ const cheerio = require('cheerio');
 const queue = require('queue');
 
 const worker = require('../utils/getDataFromPage');
-const client = require('../configs/db.config');
 
 const q = queue({ results: [], concurrency: 5 })
 
