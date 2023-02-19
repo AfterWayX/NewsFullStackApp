@@ -15,9 +15,10 @@ interface JobsParams {
 export class JobsService {
     static getJobs(params: JobsParams) {
         const { query = '', skip = 0, limit = 5 } = params
+        console.log(query)
         return instance.get('', {
             params: {
-                query,
+                searchStr: query,
                 skip,
                 limit
             }

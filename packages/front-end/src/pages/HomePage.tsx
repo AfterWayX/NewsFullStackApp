@@ -1,21 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { Helmet } from "react-helmet";
 
-import { JobsService } from "../services/Jobs.service";
-import { JobInterface } from "../interfaces/Job.interface";
+import SearchIcon from '../components/Icons/SearchIcon';
 
 export default function HomePage() {
-    const [jobs, setJobs] = useState<JobInterface[]>([])
+    const [inputValue, setInputValue] = useState('')
 
-    const getJobsData = async () => {
-        const jobsData = (await JobsService.getJobs({})).data
-        console.log(jobsData)
-        setJobs(jobsData || [])
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e?.target?.value)
     }
 
-    useEffect(() => {
-        getJobsData()
-    }, [])
+    const onClick = () => {
+        return window.location.href = `/jobs?query=${inputValue}`
+    }
 
     return (
         <>
@@ -26,15 +23,14 @@ export default function HomePage() {
                     content="Jobs posting off OpenByte companies"
                 />
             </Helmet>
-            <div className="container">
-                {jobs.map((job: JobInterface) => {
-                    const { jobTitle, jobUrl } = job
-                    return (
-                        <div key={jobUrl}>
-                            {jobTitle}
-                        </div>
-                    )
-                })}
+            <div className="container mx-auto flex justify-center items-center my-auto">
+                <div className='w-2/4 py-1 px-4 rounded-md border border-gray-200 mb-20 flex items-center'>
+                    <input className='py-1 w-full outline-none' placeholder='Search for job offers' autoComplete={''} type="search" name="search" id="search" value={inputValue} onChange={onChange} />
+                    <button onClick={onClick}>
+                    <SearchIcon />
+                    </button>
+                </div>
+
             </div>
         </>
     )

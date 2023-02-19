@@ -1,0 +1,3 @@
+export default function SearchIcon() {
+    return (<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.81145 12.5928C9.90021 12.5928 12.4042 10.1527 12.4042 7.1426C12.4042 4.13253 9.90021 1.69238 6.81145 1.69238C3.72269 1.69238 1.21875 4.13253 1.21875 7.1426C1.21875 10.1527 3.72269 12.5928 6.81145 12.5928Z" stroke="#6F7787" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.8948 14.3272L13.5393 14.9553L14.7956 13.6662L14.151 13.0381L12.8948 14.3272ZM14.151 13.0381L11.3547 10.313L10.0984 11.6021L12.8948 14.3272L14.151 13.0381Z" fill="#6F7787"></path></svg>)
+}

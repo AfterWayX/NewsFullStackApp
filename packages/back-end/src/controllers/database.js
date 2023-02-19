@@ -14,8 +14,8 @@ module.exports = {
             )
     },
     getJobs: async (params) => {
-        const { query, skip, limit } = params
-        const filter = query ? {} : { jobTitle: { $regex: query || '' } }
+        const { searchStr, skip, limit } = params
+        const filter = !searchStr ? {} : { jobTitle: { $regex: searchStr || '' } }
         const connected = await client.connect()
         const coll = connected.db('jobs').collection('jobs');
         const cursor = coll.find(filter, { skip: Number(skip) || 0, limit: Number(limit) || 10 });

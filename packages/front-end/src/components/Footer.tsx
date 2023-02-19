@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="flex justify-between items-center mx-auto container">
                 <div className="flex flex-row gap-x-2 md:gap-x-1">
                     {socialLinks.map(({ image, href, alt }) => (
-                        <a href={href} key={href} className={socials} target="_blank">
+                        <a href={href} key={href} className={socials} target="_blank" rel="noreferrer">
                             <img className="h-4 w-4" src={image} alt={alt} />
                         </a>
                     ))}
