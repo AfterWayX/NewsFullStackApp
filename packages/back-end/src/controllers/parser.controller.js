@@ -1,11 +1,11 @@
 const service = require('../services/parser');
 
-const url = 'https://www.glassdoor.com';
-const path = '/Job/full-stack-developer-jobs-SRCH_KO0,20.htm';
+const url = 'https://www.indeed.com';
+const defaultPath = '/q-Production-l-Beachwood,-OH-jobs.html';
 
 module.exports = {
     startParsing: async (req, res) => {
-        const pages = req.query.pages || 1;
-        return service.parseData(res, url, path)
+        const path = req.query.path || defaultPath;
+        return await service.parseData(res, url, path)
     }
 }
