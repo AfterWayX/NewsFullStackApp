@@ -1,4 +1,4 @@
-import logo from '../logo.svg';
+import logo from '../ShortLogo.svg';
 
 export default function Logo() {
     return (

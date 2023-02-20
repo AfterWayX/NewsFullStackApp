@@ -2,7 +2,7 @@ export interface JobInterface {
     _id: string;
 
     companyName: string;
-    description: object;
+    description: any;
     jobTitle: string;
     jobUrl: string;
     location: string;

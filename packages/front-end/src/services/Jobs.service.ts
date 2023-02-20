@@ -14,7 +14,7 @@ interface JobsParams {
 
 export class JobsService {
     static getJobs(params: JobsParams) {
-        const { query = '', skip = 0, limit = 5 } = params
+        const { query = '', skip = 0, limit = 13 } = params
         console.log(query)
         return instance.get('', {
             params: {

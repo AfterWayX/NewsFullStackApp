@@ -6,7 +6,7 @@ interface NavItemProps{
 export default function NavItem(props: NavItemProps) {
     const { title, href } = props;
     return (
-        <a href={href} className="font-bold text-gray-700">
+        <a href={href} className="font-bold text-white">
             {title}
         </a>
     )

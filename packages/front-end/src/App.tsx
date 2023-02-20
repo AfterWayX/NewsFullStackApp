@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="min-h-screen relative flex flex-col bg-gray-800">
       <BrowserRouter>
         <Header />
         <Routes >
@@ -17,7 +17,7 @@ function App() {
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/jobs/:id" element={<JobsPage />} />
         </Routes>
-        <Footer />
+        <Footer isHomePage={window.location.pathname === '/'}/>
       </BrowserRouter>
     </div>
 
